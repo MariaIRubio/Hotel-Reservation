@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Reservation Form</h2>
+        <form th:action="@{/processForm}" th:object="${booking}" method="POST">
+            <h3>Guest Information</h3>
+            <div class="box">
+                <label>Name: </label>
+                <input type="text" th:field="*{guest.name}" placeholder="Name">
+                <span th:if="${#fields.hasErrors('guest.name')}" th:errors="*{guest.name}" class="error"/>
+            </div>
+            <div class="box">
+                <label>Email: </label>
+                <input type="text" th:field="*{guest.email}" placeholder="Email">
+                <span th:if="${#fields.hasErrors('guest.email')}" th:errors="*{guest.email}" class="error"/>
+            </div>
+            <div class="box">
+                <label>Phone: </label>
+                <input type="text" th:field="*{guest.phoneNumber}" placeholder="Phone Number">
+                <span th:if="${#fields.hasErrors('guest.phoneNumber')}" th:errors="*{guest.phoneNumber}" class="error"/>
+            </div>
+            <h3>Reservation Details</h3>
+            <div class="box">
+                <label>Check-in Date: </label>
+                <input type="date" th:field="*{reservation.checkInDate}">
+                <span th:if="${#fields.hasErrors('reservation.checkInDate')}" th:errors="*{reservation.checkInDate}" class="error"/>
+            </div>
+            <div class="box">
+                <label>Check-out Date: </label>
+                <input type="date" th:field="*{reservation.checkOutDate}">
+                <span th:if="${#fields.hasErrors('reservation.checkOutDate')}" th:errors="*{reservation.checkOutDate}" class="error"/>
+            </div>
+            <div class="box">
+                <label>Room Type: </label>
+                <select th:field="*{reservation.roomType}">
+                    <option th:value="Single">Single</option>
+                    <option th:value="Double">Double</option>
+                    <option th:value="Balcony">Balcony</option>
+                </select>
+            </div>
+            <h3>Additional Preferences</h3>
+            <div class="box">
+                <label>Smoking Preferences: </label>
+                <input type="radio" th:field="*{reservation.smokingPreferences}" th:value="Yes">Yes</input>
+                <input type="radio" th:field="*{reservation.smokingPreferences}" th:value="No">No</input>
+               <span th:if="${#fields.hasErrors('reservation.smokingPreferences')}" th:errors="*{reservation.smokingPreferences}" class="error"/>
+            </div>
+            <div class="box">
+                <label>Breakfast included: </label>
+                <input type="checkbox" th:field="*{reservation.breakfast}" th:value="Breakfast">Breakfast</input>
+<!--                <span th:if="${#fields.hasErrors('reservation.breakfast')}" th:errors="*{reservation.breakfast}"/>-->
+            </div>
+            <div class="box">
+                <label>Late Check-out: </label>
+                <input type="checkbox" th:field="*{reservation.lateCheckOut}" th:value="Check-out">Late Check-out</input>
+<!--                <span th:if="${#fields.hasErrors('reservation.lateCheckOut')}" th:errors="*{reservation.lateCheckOut}"/>-->
+            </div>
+            <h3>Terms and Conditions</h3>
+            <div class="box">
+                <label>Agree to Terms: </label>
+                <input type="checkbox" th:field="*{reservation.agreeTerms}" th:value="Agree">I Agree</input>
+                <span th:if="${#fields.hasErrors('reservation.agreeTerms')}" th:errors="*{reservation.agreeTerms}" class="error"/>
+            </div>
+            <input type="submit" value="Make Reservation">
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+<h2>Booking Confirmation</h2>
+<div class="box">
+    <label>Name: </label> <span th:text="${booking.guest.name}"/>
+</div>
+<div class="box">
+    <label>Email: </label> <span th:text="${booking.guest.email}"/>
+</div>
+<div class="box">
+    <label>Phone Number: </label> <span th:text="${booking.guest.phoneNumber}"/>
+</div>
+<div class="box">
+    <label>Check-in Date: </label> <span th:text="${booking.reservation.checkInDate}"/>
+</div>
+<div class="box">
+    <label>Check-out Date: </label> <span th:text="${booking.reservation.checkOutDate}"/>
+</div>
+<div class="box">
+    <label>Room Type: </label> <span th:text="${booking.reservation.roomType}"/>
+</div>
+<div class="box">
+    <label>Smoking Preferences: </label> <span th:text="${booking.reservation.smokingPreferences}"/>
+</div>
+<div class="box">
+    <label>Breakfast included: </label> <span th:text="${booking.reservation.breakfast}"/>
+</div>
+<div class="box">
+    <label>Late Check-out: </label> <span th:text="${booking.reservation.lateCheckOut}"/>
+</div>
+
+</div>
+</body>
+</html>
